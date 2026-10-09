@@ -1,0 +1,2970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serenity Skin Spa — Where Skin Finds Calm</title>
+<meta name="description" content="Serenity Skin Spa is a boutique dermatology and wellness studio offering gentle, spa-inspired skin care — medical expertise with a relaxed, healing touch.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+<style>
+/* ============================================
+   SERENITY SKIN SPA — TOKENS
+=============================================== */
+:root{
+  --sage:#7C9082;
+  --sage-deep:#4A5D4F;
+  --sage-soft:#B8C4B4;
+  --blush:#E5C4C4;
+  --blush-soft:#F2DDDD;
+  --blush-deep:#D4A5A5;
+  --sand:#EFE7DA;
+  --sand-soft:#F7F1E8;
+  --coral:#D08B6F;
+  --coral-deep:#B87356;
+  --cream:#FAF6EF;
+  --ivory:#FFFFFF;
+  --ink:#2A2D2A;
+  --muted:#7A7D76;
+  --line:rgba(42,45,42,.1);
+
+  --font-display:'Cormorant Garamond', serif;
+  --font-body:'Jost', sans-serif;
+
+  --ease:cubic-bezier(.4,0,.2,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+
+  --container:1320px;
+  --radius:30px;
+  --radius-lg:60px;
+  --radius-pill:999px;
+
+  --shadow-sm:0 4px 14px rgba(74,93,79,.06);
+  --shadow:0 12px 30px rgba(74,93,79,.08);
+  --shadow-lg:0 30px 60px rgba(74,93,79,.12);
+  --shadow-xl:0 50px 100px rgba(74,93,79,.15);
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; -webkit-font-smoothing:antialiased; scroll-padding-top:100px; }
+body{ font-family:var(--font-body); color:var(--ink); background:var(--cream); overflow-x:hidden; line-height:1.7; font-size:15.5px; font-weight:300; letter-spacing:.005em; }
+img{ max-width:100%; display:block; }
+a{ text-decoration:none; color:inherit; }
+ul{ list-style:none; }
+button{ font-family:inherit; cursor:pointer; border:none; background:none; }
+
+.wrap{ max-width:var(--container); margin:0 auto; padding:0 40px; }
+
+h1,h2,h3,h4,h5{
+  font-family:var(--font-display);
+  font-weight:400;
+  line-height:1.1;
+  color:var(--sage-deep);
+  letter-spacing:.005em;
+}
+
+section{ position:relative; }
+
+@media (prefers-reduced-motion: reduce){ *{ animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; } }
+::selection{ background:var(--blush); color:var(--sage-deep); }
+::-webkit-scrollbar{ width:8px; }
+::-webkit-scrollbar-track{ background:var(--sand); }
+::-webkit-scrollbar-thumb{ background:var(--sage); border-radius:8px; }
+
+/* ============================================
+   BUTTONS
+=============================================== */
+.btn{
+  position:relative; display:inline-flex; align-items:center; gap:10px;
+  padding:17px 38px;
+  font-family:var(--font-body); font-weight:500;
+  font-size:.72rem; letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#fff; background:var(--sage-deep);
+  border-radius:var(--radius-pill); overflow:hidden;
+  isolation:isolate; cursor:pointer;
+  transition:all .5s var(--ease);
+  box-shadow:0 8px 22px rgba(74,93,79,.2);
+}
+.btn span, .btn i{ position:relative; z-index:2; transition:color .5s var(--ease); }
+.btn i{ font-size:.7rem; transition:transform .5s var(--ease), color .5s var(--ease); }
+.btn::before{
+  content:''; position:absolute; inset:auto 0 0 0; height:0;
+  background:var(--coral); z-index:1;
+  transition:height .5s var(--ease-out);
+}
+.btn:hover{ transform:translateY(-3px); box-shadow:0 14px 32px rgba(208,139,111,.3); }
+.btn:hover::before{ height:100%; }
+.btn:hover i{ transform:translateX(5px); }
+.btn-coral{ background:var(--coral); box-shadow:0 8px 22px rgba(208,139,111,.28); }
+.btn-coral::before{ background:var(--sage-deep); }
+.btn-blush{ background:var(--blush); color:var(--sage-deep); }
+.btn-blush::before{ background:var(--sage-deep); }
+.btn-blush:hover{ color:#fff; }
+.btn-outline{ background:transparent; color:var(--sage-deep); border:1.5px solid var(--sage-deep); box-shadow:none; }
+.btn-outline::before{ background:var(--sage-deep); }
+.btn-outline:hover{ color:#fff; }
+.btn-outline-ivory{ background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.6); box-shadow:none; }
+.btn-outline-ivory::before{ background:#fff; }
+.btn-outline-ivory:hover{ color:var(--sage-deep); border-color:#fff; }
+
+.arrow-link{
+  display:inline-flex; align-items:center; gap:10px;
+  color:var(--sage-deep); font-weight:500; font-size:.78rem;
+  letter-spacing:.18em; text-transform:uppercase;
+  padding-bottom:6px; position:relative;
+  transition:color .3s;
+}
+.arrow-link::after{
+  content:''; position:absolute; left:0; bottom:0; right:0;
+  height:1.5px; background:var(--coral);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .5s var(--ease-out);
+  border-radius:2px;
+}
+.arrow-link i{ font-size:.7rem; transition:transform .4s var(--ease); }
+.arrow-link:hover{ color:var(--coral); }
+.arrow-link:hover::after{ transform:scaleX(1); }
+.arrow-link:hover i{ transform:translateX(6px); }
+
+/* ============================================
+   LOGO
+=============================================== */
+.logo{
+  display:flex; align-items:center; gap:12px;
+  font-family:var(--font-display); font-size:1.6rem;
+  font-weight:500; color:var(--sage-deep); letter-spacing:.02em;
+  transition:color .4s;
+}
+.logo-mark{
+  width:42px; height:42px; border-radius:50%;
+  background:linear-gradient(135deg, var(--blush) 0%, var(--blush-soft) 100%);
+  color:var(--sage-deep);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-size:1.1rem;
+  font-style:italic; font-weight:500;
+  transition:all .4s var(--ease);
+  box-shadow:0 6px 16px rgba(229,196,196,.4);
+}
+.logo:hover .logo-mark{ transform:rotate(-10deg) scale(1.05); }
+.logo em{ font-style:italic; color:var(--coral); font-weight:400; }
+
+/* ============================================
+   HEADER
+=============================================== */
+header{
+  position:fixed; inset:0 0 auto 0; z-index:1000;
+  padding:24px 0; transition:all .5s var(--ease);
+}
+header .wrap{ display:flex; align-items:center; justify-content:space-between; gap:30px; }
+nav.main-nav ul{ display:flex; gap:4px; align-items:center; }
+nav.main-nav a{
+  color:var(--sage-deep); font-size:.78rem; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase;
+  padding:10px 18px; border-radius:var(--radius-pill);
+  transition:all .35s var(--ease);
+  cursor:pointer;
+}
+nav.main-nav a:hover{ background:rgba(184,196,180,.15); }
+nav.main-nav a.active{ background:var(--sage-deep); color:#fff; }
+
+.header-right{ display:flex; align-items:center; gap:14px; }
+.icon-btn{
+  color:var(--sage-deep); font-size:.95rem; cursor:pointer;
+  width:42px; height:42px; border-radius:50%;
+  background:var(--sand);
+  display:flex; align-items:center; justify-content:center;
+  transition:all .35s var(--ease);
+}
+.icon-btn:hover{ background:var(--blush); transform:translateY(-2px) rotate(-8deg); }
+.header-right .btn{ padding:13px 24px; font-size:.68rem; letter-spacing:.2em; }
+.burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; padding:10px; }
+.burger span{ width:24px; height:1.5px; background:var(--sage-deep); border-radius:2px; transition:.3s; }
+
+header.scrolled{
+  background:rgba(250,246,239,.92);
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  padding:14px 0; box-shadow:0 8px 24px rgba(74,93,79,.06);
+  border-bottom:1px solid var(--line);
+}
+header.scrolled .logo{ color:var(--sage-deep); }
+header.scrolled .logo em{ color:var(--coral); }
+header.scrolled .logo-mark{
+  background:linear-gradient(135deg, var(--blush) 0%, var(--blush-soft) 100%);
+  color:var(--sage-deep);
+}
+
+/* Transparent over dark hero */
+header.transparent{ background:transparent; }
+header.transparent .logo{ color:#fff; }
+header.transparent .logo em{ color:var(--blush-soft); }
+header.transparent .logo-mark{
+  background:rgba(255,255,255,.2);
+  color:#fff;
+  backdrop-filter:blur(10px);
+}
+header.transparent nav.main-nav a{ color:rgba(255,255,255,.9); }
+header.transparent nav.main-nav a:hover{ background:rgba(255,255,255,.15); }
+header.transparent nav.main-nav a.active{ background:#fff; color:var(--sage-deep); }
+header.transparent .icon-btn{
+  background:rgba(255,255,255,.15);
+  color:#fff;
+  backdrop-filter:blur(10px);
+}
+header.transparent .icon-btn:hover{ background:var(--blush); color:var(--sage-deep); }
+header.transparent .header-right .btn{ background:#fff; color:var(--sage-deep); }
+header.transparent .header-right .btn::before{ background:var(--coral); }
+header.transparent .header-right .btn:hover{ color:#fff; }
+header.transparent .burger span{ background:#fff; }
+
+/* ============================================
+   MOBILE NAV
+=============================================== */
+.mobile-nav{
+  position:fixed; inset:0; z-index:1500;
+  background:var(--sage-deep); color:#fff;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:22px; transform:translateY(-100%);
+  transition:transform .55s var(--ease-out);
+  visibility:hidden;
+  height:100vh;
+  height:100dvh;
+  overflow-y:auto;
+  padding:80px 24px 40px;
+}
+.mobile-nav.open{ transform:translateY(0); visibility:visible; }
+.mobile-nav a{
+  color:#fff; font-family:var(--font-display);
+  font-size:2rem; font-weight:400; font-style:italic;
+  padding:8px 24px; border-radius:var(--radius-pill);
+  transition:all .3s;
+  cursor:pointer;
+}
+.mobile-nav a:hover, .mobile-nav a.active{
+  background:var(--blush); color:var(--sage-deep);
+}
+.mobile-nav .btn{ font-family:var(--font-body); font-style:normal; font-size:.75rem; margin-top:16px; }
+.mobile-close{
+  position:absolute; top:24px; right:28px;
+  width:46px; height:46px; border-radius:50%;
+  background:rgba(255,255,255,.12); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.2rem; cursor:pointer;
+  transition:all .3s var(--ease);
+}
+.mobile-close:hover{ background:var(--blush); color:var(--sage-deep); }
+
+body:has(.mobile-nav.open){ overflow:hidden; }
+
+/* ============================================
+   SECTION SHELL — HOME HERO
+=============================================== */
+.section-anchor{
+  scroll-margin-top:100px;
+}
+
+/* ============================================
+   HERO — Full-bleed, centered, bottom card
+=============================================== */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  overflow:hidden;
+  padding:180px 0 0;
+}
+.hero-bg{
+  position:absolute; inset:0;
+  background-image:url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=2000&q=80');
+  background-size:cover;
+  background-position:center;
+  z-index:0;
+  transform:scale(1.03);
+  animation:heroZoom 25s ease-out forwards;
+}
+@keyframes heroZoom{
+  from{ transform:scale(1.03); }
+  to{ transform:scale(1.10); }
+}
+.hero-tint{
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(180deg,
+    rgba(42,45,42,.15) 0%,
+    rgba(42,45,42,.25) 40%,
+    rgba(74,93,79,.7) 75%,
+    rgba(74,93,79,.9) 100%);
+}
+.hero-tint-2{
+  position:absolute; inset:0; z-index:1;
+  background:radial-gradient(
+    ellipse at 50% 100%,
+    rgba(229,196,196,.15) 0%,
+    transparent 60%);
+}
+
+.hero-top{
+  position:relative; z-index:3;
+  text-align:center;
+  padding-bottom:60px;
+}
+.hero-eyebrow{
+  display:inline-flex; align-items:center; gap:14px;
+  font-size:.72rem; letter-spacing:.34em;
+  text-transform:uppercase;
+  color:#fff; font-weight:500;
+  padding:10px 22px;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:var(--radius-pill);
+  margin-bottom:32px;
+  backdrop-filter:blur(10px);
+  animation:fadeUp .9s var(--ease-out) .1s both;
+}
+.hero-eyebrow i{ color:var(--blush-soft); font-size:.75rem; }
+
+.hero-title{
+  font-family:var(--font-display);
+  font-size:clamp(3rem, 7vw, 6.5rem);
+  line-height:1;
+  font-weight:400;
+  letter-spacing:-0.015em;
+  color:#fff;
+  margin-bottom:24px;
+  animation:fadeUp 1s var(--ease-out) .22s both;
+}
+.hero-title em{
+  font-style:italic;
+  color:var(--blush-soft);
+  font-weight:400;
+}
+
+.hero-subtitle{
+  color:rgba(255,255,255,.75);
+  font-size:1.15rem;
+  letter-spacing:.02em;
+  max-width:620px;
+  margin:0 auto;
+  font-weight:300;
+  animation:fadeUp 1s var(--ease-out) .38s both;
+}
+
+.hero-bottom{
+  position:relative; z-index:3;
+  background:var(--cream);
+  border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+  padding:70px 60px 60px;
+  margin:0 auto;
+  max-width:calc(var(--container) - 80px);
+  width:100%;
+  animation:fadeUp 1.2s var(--ease-out) .55s both;
+}
+.hero-bottom::before{
+  content:''; position:absolute;
+  top:-40px; left:50%; transform:translateX(-50%);
+  width:80px; height:4px;
+  background:var(--coral);
+  border-radius:4px;
+}
+.hero-bottom-grid{
+  display:grid;
+  grid-template-columns:1fr auto auto;
+  gap:60px;
+  align-items:center;
+}
+.hero-bottom-text h3{
+  font-family:var(--font-display);
+  font-size:1.6rem;
+  font-weight:400;
+  color:var(--sage-deep);
+  line-height:1.3;
+  margin-bottom:8px;
+}
+.hero-bottom-text h3 em{ font-style:italic; color:var(--coral); }
+.hero-bottom-text p{
+  color:var(--muted);
+  font-size:.95rem;
+  line-height:1.6;
+}
+.hero-stats{
+  display:flex; gap:44px;
+  padding-left:60px;
+  border-left:1px solid var(--line);
+}
+.hero-stat span:first-child{
+  display:block;
+  font-family:var(--font-display);
+  font-size:2rem;
+  font-style:italic;
+  color:var(--sage-deep);
+  line-height:1;
+  margin-bottom:6px;
+}
+.hero-stat span:first-child em{ color:var(--coral); }
+.hero-stat span:last-child{
+  font-size:.68rem;
+  color:var(--muted);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+
+@keyframes fadeUp{
+  from{ opacity:0; transform:translateY(30px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* ============================================
+   MARQUEE
+=============================================== */
+.marquee-strip{
+  background:var(--sand);
+  padding:28px 0;
+  overflow:hidden;
+  position:relative;
+  border-bottom:1px solid var(--line);
+}
+.marquee-track{
+  display:flex; gap:60px; white-space:nowrap;
+  animation:marquee 45s linear infinite;
+  width:max-content;
+}
+.marquee-track span{
+  font-family:var(--font-display);
+  font-size:1.25rem;
+  font-style:italic;
+  color:var(--sage-deep);
+  display:inline-flex; align-items:center; gap:60px;
+}
+.marquee-track span::after{
+  content:'✦';
+  color:var(--coral);
+  font-size:.75rem;
+  font-style:normal;
+}
+@keyframes marquee{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+/* ============================================
+   SECTION HEAD
+=============================================== */
+.eyebrow{
+  display:inline-flex; align-items:center; gap:12px;
+  font-size:.72rem; letter-spacing:.3em;
+  text-transform:uppercase;
+  font-weight:500; color:var(--coral);
+  margin-bottom:22px;
+}
+.eyebrow::before{
+  content:''; width:36px; height:1px;
+  background:var(--coral);
+}
+.eyebrow.centered::after{
+  content:''; width:36px; height:1px;
+  background:var(--coral);
+}
+
+.section-head{ max-width:720px; margin-bottom:70px; }
+.section-head h2{
+  font-size:clamp(2.2rem, 4.4vw, 3.8rem);
+  font-weight:400;
+  letter-spacing:-0.005em;
+  line-height:1.1;
+  color:var(--sage-deep);
+}
+.section-head h2 em{
+  font-style:italic;
+  color:var(--coral);
+}
+.section-head p{
+  color:var(--muted);
+  font-size:1.02rem;
+  line-height:1.85;
+  margin-top:24px;
+  max-width:600px;
+  font-weight:300;
+}
+.section-head.center{ margin-inline:auto; text-align:center; }
+.section-head.center .eyebrow{ justify-content:center; }
+.section-head.center p{ margin-inline:auto; }
+
+/* ============================================
+   ABOUT
+=============================================== */
+.about{
+  padding:140px 0;
+  background:var(--cream);
+  position:relative;
+  overflow:hidden;
+}
+.about::before{
+  content:''; position:absolute;
+  top:10%; right:-10%;
+  width:600px; height:600px;
+  background:radial-gradient(circle, var(--blush-soft) 0%, transparent 65%);
+  border-radius:50%; opacity:.6;
+  pointer-events:none;
+}
+.about::after{
+  content:''; position:absolute;
+  bottom:10%; left:-10%;
+  width:500px; height:500px;
+  background:radial-gradient(circle, var(--sand) 0%, transparent 65%);
+  border-radius:50%; opacity:.7;
+  pointer-events:none;
+}
+.about .wrap{ position:relative; z-index:2; }
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:100px;
+  align-items:center;
+}
+
+.about-media{
+  position:relative;
+  height:680px;
+  padding:40px 40px 40px 0;
+}
+.about-image-main{
+  position:absolute;
+  top:0; right:0;
+  width:82%; height:78%;
+  border-radius:300px 300px 30px 30px;
+  overflow:hidden;
+  box-shadow:var(--shadow-xl);
+  z-index:2;
+}
+.about-image-main img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 1.4s var(--ease-out);
+}
+.about-media:hover .about-image-main img{ transform:scale(1.04); }
+.about-image-small{
+  position:absolute;
+  bottom:0; left:0;
+  width:56%; height:52%;
+  border-radius:30px 30px 300px 300px;
+  overflow:hidden;
+  border:10px solid var(--cream);
+  box-shadow:var(--shadow-lg);
+  z-index:3;
+}
+.about-image-small img{ width:100%; height:100%; object-fit:cover; }
+
+.about-blob{
+  position:absolute;
+  top:20%; left:-10%;
+  width:160px; height:160px;
+  background:var(--blush);
+  border-radius:50%;
+  opacity:.6;
+  z-index:1;
+  animation:blobSpin 30s linear infinite;
+}
+.about-blob-2{
+  position:absolute;
+  bottom:-20px; right:10%;
+  width:100px; height:100px;
+  background:var(--sand);
+  border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;
+  z-index:1;
+  animation:blobSpin 25s linear infinite reverse;
+}
+@keyframes blobSpin{ to{ transform:rotate(360deg); } }
+
+.about-badge{
+  position:absolute;
+  top:55%; left:42%;
+  background:var(--sage-deep);
+  color:#fff;
+  padding:24px 30px;
+  border-radius:24px;
+  box-shadow:var(--shadow-xl);
+  z-index:5;
+  animation:floatY 5s ease-in-out infinite;
+  text-align:center;
+}
+.about-badge .num{
+  font-family:var(--font-display);
+  font-size:2.4rem;
+  font-style:italic;
+  line-height:1;
+  color:var(--blush-soft);
+  margin-bottom:6px;
+}
+.about-badge .label{
+  font-size:.6rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.7);
+}
+@keyframes floatY{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-14px); }
+}
+
+.about-copy .section-head{ margin-bottom:32px; }
+.about-copy p{
+  color:var(--muted);
+  font-size:1.02rem;
+  line-height:1.9;
+  margin-bottom:22px;
+  font-weight:300;
+}
+.about-copy p.lead{
+  font-family:var(--font-display);
+  font-size:1.4rem;
+  font-style:italic;
+  color:var(--sage-deep);
+  line-height:1.5;
+  margin-bottom:28px;
+}
+
+/* ============================================
+   TREATMENTS
+=============================================== */
+.treatments{
+  padding:140px 0;
+  background:var(--sand);
+  position:relative;
+  overflow:hidden;
+}
+.treatments::before{
+  content:''; position:absolute;
+  top:-10%; right:-10%;
+  width:600px; height:600px;
+  background:radial-gradient(circle, var(--blush-soft) 0%, transparent 65%);
+  border-radius:50%; opacity:.5;
+  pointer-events:none;
+}
+.treatments .wrap{ position:relative; z-index:2; }
+
+.treatments-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:26px;
+}
+.treatment-card{
+  background:var(--cream);
+  border-radius:40px;
+  padding:0;
+  overflow:hidden;
+  transition:all .5s var(--ease);
+  position:relative;
+  display:flex;
+  flex-direction:column;
+}
+.treatment-card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-xl);
+}
+.treatment-image{
+  position:relative;
+  height:240px;
+  overflow:hidden;
+  border-radius:40px 40px 0 0;
+}
+.treatment-image img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 1.4s var(--ease-out);
+}
+.treatment-card:hover .treatment-image img{ transform:scale(1.06); }
+.treatment-image::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(0deg, rgba(74,93,79,.3), transparent 50%);
+}
+.treatment-body{
+  padding:34px 34px 34px;
+  display:flex; flex-direction:column;
+  flex:1;
+}
+.treatment-icon{
+  width:60px; height:60px;
+  border-radius:20px;
+  background:var(--blush-soft);
+  color:var(--sage-deep);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem;
+  margin-bottom:24px;
+  transition:all .5s var(--ease);
+}
+.treatment-card:hover .treatment-icon{
+  background:var(--coral);
+  color:#fff;
+  transform:rotate(-8deg) scale(1.05);
+}
+.treatment-card h3{
+  font-family:var(--font-display);
+  font-size:1.5rem;
+  font-weight:400;
+  margin-bottom:14px;
+  letter-spacing:-0.005em;
+  color:var(--sage-deep);
+  line-height:1.25;
+}
+.treatment-card h3 em{ font-style:italic; color:var(--coral); }
+.treatment-card p{
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.75;
+  margin-bottom:26px;
+  flex:1;
+  font-weight:300;
+}
+.treatment-card .arrow-link{
+  font-size:.72rem;
+  align-self:flex-start;
+}
+
+/* ============================================
+   PROCESS
+=============================================== */
+.process{
+  padding:140px 0;
+  background:var(--sage-deep);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.process::before{
+  content:''; position:absolute;
+  top:-20%; right:-10%;
+  width:700px; height:700px;
+  background:radial-gradient(circle, rgba(229,196,196,.15), transparent 65%);
+  border-radius:50%; pointer-events:none;
+}
+.process::after{
+  content:''; position:absolute;
+  bottom:-15%; left:-10%;
+  width:600px; height:600px;
+  background:radial-gradient(circle, rgba(184,196,180,.1), transparent 70%);
+  border-radius:50%; pointer-events:none;
+}
+.process .wrap{ position:relative; z-index:2; }
+.process-head{
+  text-align:center;
+  max-width:720px;
+  margin:0 auto 90px;
+}
+.process-head .eyebrow{ color:var(--blush-soft); justify-content:center; }
+.process-head .eyebrow::before,
+.process-head .eyebrow::after{ background:var(--blush-soft); }
+.process-head h2{
+  color:#fff;
+  font-size:clamp(2rem, 4.2vw, 3.6rem);
+  font-weight:400;
+  line-height:1.1;
+  letter-spacing:-0.005em;
+  margin-bottom:22px;
+}
+.process-head h2 em{ font-style:italic; color:var(--blush-soft); }
+.process-head p{
+  color:rgba(255,255,255,.7);
+  font-size:1.05rem;
+  line-height:1.8;
+}
+.process-list{
+  max-width:900px;
+  margin:0 auto;
+  position:relative;
+}
+.process-list::before{
+  content:''; position:absolute;
+  left:60px; top:0; bottom:0;
+  width:2px;
+  background:repeating-linear-gradient(180deg, rgba(229,196,196,.4) 0 6px, transparent 6px 14px);
+}
+.process-item{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:40px;
+  padding:36px 0;
+  position:relative;
+  transition:padding-left .5s var(--ease);
+}
+.process-item:hover{ padding-left:14px; }
+.process-num{
+  width:120px; height:120px;
+  border-radius:50%;
+  background:var(--sage-deep);
+  border:2px solid rgba(229,196,196,.4);
+  color:var(--blush-soft);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display);
+  font-size:2rem;
+  font-style:italic;
+  position:relative;
+  z-index:2;
+  transition:all .5s var(--ease);
+}
+.process-item:hover .process-num{
+  background:var(--blush);
+  color:var(--sage-deep);
+  border-color:var(--blush);
+  transform:scale(1.05);
+}
+.process-body{
+  padding-top:20px;
+}
+.process-body h4{
+  color:#fff;
+  font-family:var(--font-display);
+  font-size:1.6rem;
+  font-weight:400;
+  letter-spacing:-0.005em;
+  margin-bottom:12px;
+}
+.process-body p{
+  color:rgba(255,255,255,.7);
+  font-size:.98rem;
+  line-height:1.75;
+  max-width:520px;
+  font-weight:300;
+}
+
+/* ============================================
+   GALLERY
+=============================================== */
+.gallery{
+  padding:140px 0;
+  background:var(--cream);
+  position:relative;
+  overflow:hidden;
+}
+.gallery::before{
+  content:''; position:absolute;
+  top:10%; left:-10%;
+  width:500px; height:500px;
+  background:radial-gradient(circle, var(--blush-soft) 0%, transparent 65%);
+  border-radius:50%; opacity:.5;
+  pointer-events:none;
+}
+.gallery .wrap{ position:relative; z-index:2; }
+
+.gallery-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:60px;
+  gap:40px;
+  flex-wrap:wrap;
+}
+.gallery-head .section-head{ margin-bottom:0; }
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(6, 1fr);
+  gap:20px;
+  grid-auto-rows:220px;
+}
+.gallery-tile{
+  position:relative;
+  overflow:hidden;
+  border-radius:30px;
+  cursor:pointer;
+  transition:all .5s var(--ease);
+}
+.gallery-tile:nth-child(1){ grid-column:span 4; grid-row:span 2; }
+.gallery-tile:nth-child(2){ grid-column:span 2; }
+.gallery-tile:nth-child(3){ grid-column:span 2; }
+.gallery-tile:nth-child(4){ grid-column:span 2; }
+.gallery-tile:nth-child(5){ grid-column:span 4; }
+.gallery-tile:nth-child(6){ grid-column:span 6; }
+
+.gallery-tile img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 1.4s var(--ease-out);
+}
+.gallery-tile:hover img{ transform:scale(1.06); }
+.gallery-tile::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(0deg, rgba(74,93,79,.85) 0%, transparent 55%);
+  opacity:0;
+  transition:opacity .5s var(--ease);
+}
+.gallery-tile:hover::after{ opacity:1; }
+.gallery-overlay{
+  position:absolute; inset:auto 0 0 0;
+  padding:30px;
+  z-index:2;
+  opacity:0;
+  transform:translateY(14px);
+  transition:all .5s var(--ease-out);
+}
+.gallery-tile:hover .gallery-overlay{
+  opacity:1; transform:translateY(0);
+}
+.gallery-overlay span{
+  display:inline-block;
+  font-size:.65rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--blush-soft);
+  font-weight:500;
+  margin-bottom:10px;
+}
+.gallery-overlay h4{
+  color:#fff;
+  font-family:var(--font-display);
+  font-size:1.4rem;
+  font-style:italic;
+  font-weight:400;
+}
+
+.gallery-zoom{
+  position:absolute; top:20px; right:20px;
+  width:44px; height:44px;
+  border-radius:50%;
+  background:var(--cream);
+  color:var(--sage-deep);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.85rem;
+  opacity:0;
+  transform:translateY(-8px);
+  transition:all .4s var(--ease);
+  z-index:3;
+}
+.gallery-tile:hover .gallery-zoom{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ============================================
+   TEAM
+=============================================== */
+.team{
+  padding:140px 0;
+  background:var(--sand-soft);
+  position:relative;
+  overflow:hidden;
+}
+.team::before{
+  content:''; position:absolute;
+  top:20%; right:-10%;
+  width:500px; height:500px;
+  background:radial-gradient(circle, var(--blush-soft) 0%, transparent 65%);
+  border-radius:50%; opacity:.6;
+  pointer-events:none;
+}
+.team .wrap{ position:relative; z-index:2; }
+.team-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:70px;
+  gap:40px;
+  flex-wrap:wrap;
+}
+.team-head .section-head{ margin-bottom:0; }
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:30px;
+}
+.team-photo{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:4/5;
+  border-radius:200px 200px 30px 30px;
+  transition:all .5s var(--ease);
+  box-shadow:var(--shadow);
+}
+.team-photo img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 1.2s var(--ease-out);
+}
+.team-photo::after{
+  content:''; position:absolute;
+  inset:0;
+  background:linear-gradient(0deg, rgba(74,93,79,.85), transparent 55%);
+  opacity:0;
+  transition:opacity .5s var(--ease);
+}
+.team-member:hover .team-photo img{ transform:scale(1.06); }
+.team-member:hover .team-photo::after{ opacity:1; }
+.team-member:hover .team-photo{
+  box-shadow:var(--shadow-xl);
+  transform:translateY(-6px);
+}
+.team-socials{
+  position:absolute;
+  inset:auto 0 0 0;
+  padding:24px;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  z-index:2;
+  opacity:0;
+  transform:translateY(12px);
+  transition:all .5s var(--ease-out);
+}
+.team-member:hover .team-socials{
+  opacity:1;
+  transform:translateY(0);
+}
+.team-socials a{
+  width:38px; height:38px;
+  border-radius:50%;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.3);
+  color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.8rem;
+  transition:all .3s var(--ease);
+}
+.team-socials a:hover{
+  background:var(--blush);
+  border-color:var(--blush);
+  color:var(--sage-deep);
+  transform:translateY(-3px);
+}
+.team-info{
+  padding-top:26px;
+  text-align:center;
+}
+.team-info h4{
+  font-family:var(--font-display);
+  font-size:1.35rem;
+  font-weight:400;
+  color:var(--sage-deep);
+  margin-bottom:6px;
+  font-style:italic;
+}
+.team-info span{
+  font-size:.68rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--coral);
+  font-weight:500;
+}
+
+/* ============================================
+   TESTIMONIALS
+=============================================== */
+.testimonials{
+  padding:140px 0;
+  background:linear-gradient(135deg, var(--blush-soft) 0%, var(--blush) 100%);
+  color:var(--sage-deep);
+  position:relative;
+  overflow:hidden;
+}
+.testimonials::before{
+  content:''; position:absolute;
+  top:-20%; right:-10%;
+  width:600px; height:600px;
+  background:radial-gradient(circle, rgba(208,139,111,.15), transparent 65%);
+  border-radius:50%; pointer-events:none;
+}
+.testimonials::after{
+  content:''; position:absolute;
+  bottom:-15%; left:-10%;
+  width:500px; height:500px;
+  background:radial-gradient(circle, rgba(184,196,180,.25), transparent 70%);
+  border-radius:50%; pointer-events:none;
+}
+.testimonials .wrap{ position:relative; z-index:2; }
+
+.testimonials .section-head{ margin-inline:auto; text-align:center; margin-bottom:70px; }
+.testimonials .section-head .eyebrow{ justify-content:center; }
+.testimonials .section-head .eyebrow::before,
+.testimonials .section-head .eyebrow::after{ background:var(--coral); }
+
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:26px;
+}
+.testimonial-card{
+  background:var(--cream);
+  border-radius:30px;
+  padding:44px 36px;
+  position:relative;
+  transition:all .5s var(--ease);
+  display:flex;
+  flex-direction:column;
+}
+.testimonial-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-xl);
+}
+.testimonial-card::before{
+  content:'"';
+  position:absolute;
+  top:10px; right:36px;
+  font-family:var(--font-display);
+  font-size:5rem;
+  line-height:1;
+  color:var(--blush);
+  opacity:.5;
+  font-weight:700;
+}
+.testimonial-stars{
+  display:flex;
+  gap:4px;
+  color:var(--coral);
+  margin-bottom:22px;
+  font-size:.85rem;
+  position:relative;
+  z-index:1;
+}
+.testimonial-quote{
+  font-family:var(--font-display);
+  font-size:1.15rem;
+  font-style:italic;
+  line-height:1.55;
+  color:var(--sage-deep);
+  margin-bottom:32px;
+  position:relative;
+  z-index:1;
+  flex:1;
+}
+.testimonial-quote em{ color:var(--coral); }
+.testimonial-author{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+}
+.testimonial-author img{
+  width:52px; height:52px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--blush);
+}
+.testimonial-author-info h5{
+  font-family:var(--font-display);
+  font-size:1.05rem;
+  font-weight:400;
+  color:var(--sage-deep);
+  margin-bottom:2px;
+  font-style:italic;
+}
+.testimonial-author-info span{
+  font-size:.68rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--coral);
+  font-weight:500;
+}
+
+/* ============================================
+   CONTACT
+=============================================== */
+.contact{
+  padding:140px 0;
+  background:var(--cream);
+  position:relative;
+  overflow:hidden;
+}
+.contact::before{
+  content:''; position:absolute;
+  top:20%; left:-10%;
+  width:500px; height:500px;
+  background:radial-gradient(circle, var(--blush-soft) 0%, transparent 65%);
+  border-radius:50%; opacity:.5;
+  pointer-events:none;
+}
+.contact .wrap{ position:relative; z-index:2; }
+
+.contact-head{
+  text-align:center;
+  max-width:720px;
+  margin:0 auto 70px;
+}
+.contact-head .eyebrow{ justify-content:center; }
+.contact-head .eyebrow::after{
+  content:''; width:36px; height:1px; background:var(--coral);
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:50px;
+  align-items:start;
+}
+
+.contact-form-wrap{
+  background:var(--ivory);
+  padding:56px 48px;
+  border-radius:40px;
+  box-shadow:var(--shadow-lg);
+  position:relative;
+}
+.contact-form-wrap::before{
+  content:''; position:absolute;
+  top:30px; left:48px;
+  width:50px; height:3px;
+  background:var(--coral);
+  border-radius:3px;
+}
+.contact-form-wrap h3{
+  font-size:1.7rem;
+  font-weight:400;
+  margin-bottom:10px;
+  letter-spacing:-0.005em;
+}
+.contact-form-wrap > p{
+  color:var(--muted);
+  font-size:.94rem;
+  margin-bottom:36px;
+}
+
+.contact-form .form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.contact-form .form-group{
+  margin-bottom:24px;
+}
+.contact-form label{
+  display:block;
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--sage-deep);
+  margin-bottom:10px;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+  width:100%;
+  padding:14px 18px;
+  background:var(--cream);
+  border:1.5px solid transparent;
+  border-radius:20px;
+  font-family:var(--font-body);
+  font-size:.95rem;
+  color:var(--ink);
+  transition:all .3s var(--ease);
+  outline:none;
+  font-weight:300;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+  color:var(--muted);
+  opacity:.7;
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus{
+  border-color:var(--coral);
+  background:var(--ivory);
+  box-shadow:0 0 0 4px rgba(208,139,111,.12);
+}
+.contact-form select{
+  appearance:none; -webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%234A5D4F' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 20px center;
+  padding-right:44px;
+  cursor:pointer;
+}
+.contact-form textarea{
+  resize:vertical;
+  min-height:120px;
+}
+.contact-form .btn{
+  width:100%; justify-content:center;
+  margin-top:6px;
+}
+.form-note{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-size:.75rem;
+  color:var(--muted);
+  margin-top:22px;
+  text-align:center;
+}
+.form-note i{ color:var(--coral); }
+
+.contact-side{
+  display:grid;
+  gap:22px;
+}
+.side-block{
+  background:var(--ivory);
+  padding:40px 36px;
+  border-radius:30px;
+  transition:all .5s var(--ease);
+  position:relative;
+}
+.side-block::before{
+  content:''; position:absolute;
+  top:30px; left:36px;
+  width:40px; height:3px;
+  background:var(--coral);
+  border-radius:3px;
+}
+.side-block:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+}
+.side-block h4{
+  font-size:1.2rem;
+  margin-bottom:24px;
+  font-weight:400;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  letter-spacing:-0.005em;
+  padding-top:8px;
+}
+.side-block h4 i{
+  color:var(--coral);
+  font-size:1rem;
+}
+.hours-list{ display:grid; gap:0; }
+.hours-list li{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0;
+  border-bottom:1px dashed var(--line);
+  font-size:.92rem;
+}
+.hours-list li:last-child{ border-bottom:none; }
+.hours-list li span:first-child{
+  color:var(--muted);
+}
+.hours-list li span:last-child{
+  color:var(--sage-deep);
+  font-weight:500;
+}
+.hours-list li.today span:last-child{
+  color:var(--coral);
+  font-family:var(--font-display);
+  font-style:italic;
+}
+.hours-list li.today span:first-child::after{
+  content:'· Today';
+  color:var(--coral);
+  font-size:.66rem;
+  margin-left:8px;
+  font-family:var(--font-body);
+  font-style:normal;
+  letter-spacing:.18em;
+  font-weight:500;
+  text-transform:uppercase;
+}
+
+.contact-list{ display:grid; gap:16px; }
+.contact-list li{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  font-size:.94rem;
+  line-height:1.6;
+  font-weight:300;
+}
+.contact-list li i{
+  color:var(--coral);
+  font-size:.85rem;
+  margin-top:6px;
+  min-width:16px;
+}
+.contact-list li a{
+  color:var(--sage-deep);
+  font-weight:500;
+  border-bottom:1px solid transparent;
+  transition:all .3s;
+  padding-bottom:1px;
+}
+.contact-list li a:hover{
+  color:var(--coral);
+  border-bottom-color:var(--coral);
+}
+
+.social-inline{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.social-inline a{
+  width:44px; height:44px;
+  border-radius:50%;
+  background:var(--cream);
+  color:var(--sage-deep);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:.9rem;
+  transition:all .35s var(--ease);
+}
+.social-inline a:hover{
+  background:var(--coral);
+  color:#fff;
+  transform:translateY(-3px) rotate(-8deg);
+}
+
+.emergency{
+  background:var(--sage-deep);
+  color:#fff;
+  padding:40px 36px;
+  border-radius:30px;
+  position:relative;
+  overflow:hidden;
+}
+.emergency::before{
+  content:''; position:absolute;
+  right:-40px; top:-40px;
+  width:160px; height:160px;
+  border-radius:50%;
+  background:rgba(229,196,196,.15);
+}
+.emergency::after{
+  content:''; position:absolute;
+  left:-30px; bottom:-30px;
+  width:110px; height:110px;
+  border-radius:50%;
+  border:1px solid rgba(229,196,196,.25);
+}
+.emergency > *{ position:relative; z-index:1; }
+.emergency h4{
+  color:#fff;
+  font-size:1.2rem;
+  margin-bottom:14px;
+  font-weight:400;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.emergency h4 i{ color:var(--blush-soft); }
+.emergency p{
+  color:rgba(255,255,255,.7);
+  font-size:.92rem;
+  line-height:1.7;
+  margin-bottom:22px;
+  font-weight:300;
+}
+.emergency a{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--blush);
+  color:var(--sage-deep);
+  font-weight:600;
+  font-size:.7rem;
+  padding:14px 26px;
+  border-radius:var(--radius-pill);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  transition:all .3s var(--ease);
+}
+.emergency a:hover{
+  background:var(--coral);
+  color:#fff;
+  transform:translateY(-2px);
+}
+.emergency a i{ font-size:.7rem; }
+
+/* FAQ */
+.faq{
+  padding:140px 0;
+  background:var(--sand-soft);
+  position:relative;
+  overflow:hidden;
+}
+.faq::before{
+  content:''; position:absolute;
+  top:20%; right:-10%;
+  width:500px; height:500px;
+  background:radial-gradient(circle, var(--blush-soft) 0%, transparent 65%);
+  border-radius:50%; opacity:.5;
+  pointer-events:none;
+}
+.faq .wrap{ position:relative; z-index:2; }
+.faq-grid{
+  display:grid;
+  grid-template-columns:0.9fr 1.1fr;
+  gap:80px;
+  align-items:start;
+}
+.faq-list{ display:grid; gap:0; }
+.faq-item{
+  background:var(--cream);
+  border-radius:24px;
+  margin-bottom:14px;
+  overflow:hidden;
+  transition:all .4s var(--ease);
+}
+.faq-item.open{
+  box-shadow:var(--shadow-lg);
+}
+.faq-q{
+  padding:26px 32px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  font-family:var(--font-display);
+  font-weight:400;
+  color:var(--sage-deep);
+  font-size:1.15rem;
+  font-style:italic;
+  transition:color .3s;
+}
+.faq-q:hover{ color:var(--coral); }
+.faq-q i{
+  color:var(--coral);
+  font-size:.85rem;
+  transition:transform .4s var(--ease);
+  flex-shrink:0;
+}
+.faq-item.open .faq-q i{ transform:rotate(45deg); }
+.faq-a{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .45s var(--ease);
+}
+.faq-a p{
+  padding:0 32px 28px;
+  color:var(--muted);
+  font-size:.95rem;
+  line-height:1.75;
+  font-weight:300;
+}
+
+/* ============================================
+   CTA
+=============================================== */
+.cta-section{
+  padding:0;
+  background:var(--cream);
+}
+.cta-band{
+  position:relative;
+  background:linear-gradient(135deg, var(--sage-deep) 0%, var(--sage) 100%);
+  padding:120px 40px;
+  overflow:hidden;
+  border-radius:80px 80px 0 0;
+}
+.cta-band::before{
+  content:''; position:absolute;
+  top:-15%; right:-10%;
+  width:600px; height:600px;
+  background:radial-gradient(circle, rgba(229,196,196,.15), transparent 65%);
+  border-radius:50%; pointer-events:none;
+}
+.cta-band::after{
+  content:''; position:absolute;
+  bottom:-30%; left:-5%;
+  width:500px; height:500px;
+  background:radial-gradient(circle, rgba(208,139,111,.2), transparent 65%);
+  border-radius:50%; pointer-events:none;
+}
+.cta-inner{
+  position:relative;
+  z-index:2;
+  max-width:780px;
+  margin:0 auto;
+  text-align:center;
+}
+.cta-inner .eyebrow{ color:var(--blush-soft); justify-content:center; }
+.cta-inner .eyebrow::before,
+.cta-inner .eyebrow::after{ background:var(--blush-soft); }
+.cta-inner h2{
+  font-size:clamp(2rem, 4.2vw, 3.4rem);
+  font-weight:400;
+  line-height:1.1;
+  letter-spacing:-0.01em;
+  color:#fff;
+  margin-bottom:24px;
+}
+.cta-inner h2 em{ font-style:italic; color:var(--blush-soft); }
+.cta-inner p{
+  color:rgba(255,255,255,.75);
+  font-size:1.05rem;
+  line-height:1.8;
+  margin-bottom:44px;
+  font-weight:300;
+}
+.cta-actions{
+  display:flex; gap:14px; justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* ============================================
+   FOOTER
+=============================================== */
+footer{
+  background:var(--sage-deep);
+  color:rgba(255,255,255,.6);
+  padding:100px 0 0;
+  position:relative;
+  overflow:hidden;
+}
+footer::before{
+  content:''; position:absolute;
+  top:-30%; right:-10%;
+  width:600px; height:600px;
+  background:radial-gradient(circle, rgba(229,196,196,.08), transparent 65%);
+  border-radius:50%; pointer-events:none;
+}
+footer .wrap{ position:relative; z-index:2; }
+.footer-top{
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr 1.3fr;
+  gap:60px;
+  padding-bottom:70px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.footer-brand .logo{ color:#fff; margin-bottom:22px; }
+.footer-brand .logo em{ color:var(--blush-soft); }
+.footer-brand .logo-mark{
+  background:rgba(255,255,255,.15);
+  color:#fff;
+}
+.footer-brand p{
+  font-size:.92rem;
+  line-height:1.75;
+  max-width:320px;
+  color:rgba(255,255,255,.5);
+  margin-bottom:26px;
+  font-weight:300;
+}
+.footer-col h5{
+  color:#fff;
+  font-family:var(--font-body);
+  font-size:.68rem;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+.footer-col ul li{ margin-bottom:12px; }
+.footer-col ul a{
+  font-size:.9rem;
+  font-weight:300;
+  color:rgba(255,255,255,.6);
+  transition:all .3s;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+}
+.footer-col ul a::before{
+  content:'';
+  width:0; height:1px;
+  background:var(--blush-soft);
+  transition:width .3s;
+}
+.footer-col ul a:hover{ color:var(--blush-soft); }
+.footer-col ul a:hover::before{ width:12px; }
+.footer-newsletter p{
+  font-size:.9rem;
+  margin-bottom:18px;
+  color:rgba(255,255,255,.55);
+  line-height:1.7;
+  font-weight:300;
+}
+.footer-newsletter form{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.08);
+  border-radius:var(--radius-pill);
+  padding:6px 6px 6px 22px;
+  border:1px solid rgba(255,255,255,.15);
+  transition:all .3s var(--ease);
+}
+.footer-newsletter form:focus-within{
+  border-color:var(--blush);
+  background:rgba(229,196,196,.1);
+}
+.footer-newsletter input{
+  flex:1;
+  background:none;
+  border:none;
+  color:#fff;
+  font-family:var(--font-body);
+  font-size:.9rem;
+  outline:none;
+  padding:8px 0;
+  font-weight:300;
+}
+.footer-newsletter input::placeholder{ color:rgba(255,255,255,.4); }
+.footer-newsletter button{
+  width:42px; height:42px;
+  border-radius:50%;
+  background:var(--blush);
+  color:var(--sage-deep);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:.85rem;
+  transition:all .3s var(--ease);
+}
+.footer-newsletter button:hover{
+  background:var(--coral);
+  color:#fff;
+  transform:rotate(-15deg);
+}
+.footer-socials{
+  display:flex;
+  gap:10px;
+  margin-top:24px;
+}
+.footer-socials a{
+  width:42px; height:42px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:.85rem;
+  transition:all .35s var(--ease);
+}
+.footer-socials a:hover{
+  background:var(--blush);
+  border-color:var(--blush);
+  color:var(--sage-deep);
+  transform:translateY(-3px);
+}
+.footer-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:30px 0;
+  font-size:.8rem;
+  flex-wrap:wrap;
+  gap:14px;
+  color:rgba(255,255,255,.4);
+  font-weight:300;
+}
+.footer-bottom a{ color:var(--blush-soft); }
+.footer-bottom a:hover{ color:#fff; }
+
+/* ============================================
+   LIGHTBOX
+=============================================== */
+.lightbox{
+  position:fixed; inset:0; z-index:2500;
+  background:rgba(42,45,42,.95);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .45s var(--ease), visibility .45s var(--ease);
+}
+.lightbox.open{ opacity:1; visibility:visible; }
+.lightbox-img-wrap{
+  position:relative;
+  max-width:90vw;
+  max-height:80vh;
+  transform:scale(.94);
+  transition:transform .5s var(--ease-out);
+}
+.lightbox.open .lightbox-img-wrap{ transform:scale(1); }
+.lightbox-img-wrap img{
+  max-width:90vw;
+  max-height:80vh;
+  object-fit:contain;
+  border-radius:20px;
+  box-shadow:0 40px 80px rgba(0,0,0,.5);
+}
+.lightbox-caption{
+  position:absolute;
+  bottom:-70px;
+  left:0; right:0;
+  text-align:center;
+  color:#fff;
+}
+.lightbox-caption span{
+  display:inline-block;
+  font-size:.65rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--blush-soft);
+  font-weight:500;
+  margin-bottom:10px;
+}
+.lightbox-caption h4{
+  color:#fff;
+  font-family:var(--font-display);
+  font-size:1.3rem;
+  font-style:italic;
+  font-weight:400;
+}
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next{
+  position:absolute;
+  width:52px; height:52px;
+  border-radius:50%;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:all .3s var(--ease);
+  font-size:.95rem;
+  backdrop-filter:blur(10px);
+}
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover{
+  background:var(--blush);
+  color:var(--sage-deep);
+  border-color:var(--blush);
+}
+.lightbox-close{ top:32px; right:32px; }
+.lightbox-prev{ left:32px; top:50%; transform:translateY(-50%); }
+.lightbox-next{ right:32px; top:50%; transform:translateY(-50%); }
+.lightbox-counter{
+  position:absolute;
+  bottom:32px;
+  left:50%;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,.5);
+  font-size:.75rem;
+  letter-spacing:.2em;
+  font-weight:500;
+}
+.lightbox-counter strong{ color:var(--blush-soft); }
+
+/* ============================================
+   SCROLL TOP
+=============================================== */
+.scroll-top{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  width:48px; height:48px;
+  border-radius:50%;
+  background:var(--coral);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(12px);
+  transition:all .4s var(--ease);
+  z-index:900;
+  font-size:.9rem;
+  box-shadow:0 12px 28px rgba(208,139,111,.35);
+}
+.scroll-top.show{ opacity:1; visibility:visible; transform:translateY(0); }
+.scroll-top:hover{ background:var(--sage-deep); transform:translateY(-3px); }
+
+/* ============================================
+   RESPONSIVE
+=============================================== */
+@media(max-width:1100px){
+  .hero-bottom{ padding:50px 40px 40px; }
+  .hero-bottom-grid{
+    grid-template-columns:1fr;
+    gap:32px;
+    text-align:center;
+  }
+  .hero-stats{
+    padding-left:0;
+    border-left:none;
+    justify-content:center;
+    padding-top:32px;
+    border-top:1px solid var(--line);
+  }
+  .hero-cta{ justify-content:center; }
+
+  .about-grid{ grid-template-columns:1fr; gap:70px; }
+  .about-media{ height:560px; max-width:600px; margin:0 auto; }
+
+  .treatments-grid{ grid-template-columns:repeat(2, 1fr); }
+
+  .gallery-grid{ grid-template-columns:repeat(4, 1fr); }
+  .gallery-tile:nth-child(1){ grid-column:span 4; grid-row:span 2; }
+  .gallery-tile:nth-child(2){ grid-column:span 2; }
+  .gallery-tile:nth-child(3){ grid-column:span 2; }
+  .gallery-tile:nth-child(4){ grid-column:span 2; }
+  .gallery-tile:nth-child(5){ grid-column:span 2; }
+  .gallery-tile:nth-child(6){ grid-column:span 4; }
+
+  .team-grid{ grid-template-columns:repeat(2, 1fr); }
+
+  .testimonial-grid{ grid-template-columns:1fr; gap:20px; }
+
+  .contact-grid{ grid-template-columns:1fr; gap:40px; }
+  .contact-form-wrap{ padding:48px 40px; }
+
+  .faq-grid{ grid-template-columns:1fr; gap:50px; }
+
+  .footer-top{ grid-template-columns:1fr 1fr; row-gap:50px; }
+}
+
+@media(max-width:900px){
+  nav.main-nav, .header-right .btn{ display:none; }
+  .burger{ display:flex; }
+  header.transparent .burger span{ background:#fff; }
+}
+
+@media(max-width:768px){
+  .wrap{ padding:0 24px; }
+  .hero{ padding:140px 0 0; min-height:auto; }
+  .hero-title{ font-size:2.6rem; }
+  .hero-subtitle{ font-size:1rem; }
+  .hero-bottom{ padding:40px 24px 40px; border-radius:40px 40px 0 0; max-width:100%; }
+  .hero-bottom-text h3{ font-size:1.3rem; }
+  .hero-stats{ gap:30px; }
+  .hero-stat span:first-child{ font-size:1.6rem; }
+
+  .about, .treatments, .process,
+  .gallery, .team, .testimonials,
+  .contact, .faq{ padding:90px 0; }
+
+  .about-media{ height:480px; }
+  .about-blob{ width:100px; height:100px; }
+  .about-badge{ padding:18px 22px; }
+  .about-badge .num{ font-size:1.9rem; }
+
+  .treatments-grid{ grid-template-columns:1fr; gap:22px; }
+  .treatment-body{ padding:28px 26px; }
+
+  .process-head{ margin-bottom:60px; }
+  .process-list::before{ left:44px; }
+  .process-item{ grid-template-columns:88px 1fr; gap:24px; padding:28px 0; }
+  .process-num{ width:88px; height:88px; font-size:1.5rem; }
+  .process-body h4{ font-size:1.3rem; }
+
+  .gallery-grid{ grid-template-columns:1fr; grid-auto-rows:240px; gap:16px; }
+  .gallery-tile:nth-child(1),
+  .gallery-tile:nth-child(2),
+  .gallery-tile:nth-child(3),
+  .gallery-tile:nth-child(4),
+  .gallery-tile:nth-child(5),
+  .gallery-tile:nth-child(6){
+    grid-column:span 1;
+    grid-row:span 1;
+  }
+  .gallery-head{ flex-direction:column; align-items:flex-start; }
+
+  .team-grid{ grid-template-columns:1fr; gap:32px; }
+
+  .testimonial-card{ padding:36px 28px; }
+
+  .contact-form-wrap{ padding:40px 28px; border-radius:30px; }
+  .contact-form .form-row{ grid-template-columns:1fr; gap:0; }
+
+  .cta-band{ padding:80px 24px; border-radius:50px 50px 0 0; }
+  .cta-actions .btn{ padding:14px 26px; font-size:.68rem; letter-spacing:.18em; }
+
+  .footer-top{ grid-template-columns:1fr; gap:40px; }
+  .footer-bottom{ justify-content:center; text-align:center; }
+
+  .lightbox-close{ top:16px; right:16px; }
+  .lightbox-prev{ left:16px; }
+  .lightbox-next{ right:16px; }
+  .lightbox-close,
+  .lightbox-prev,
+  .lightbox-next{ width:44px; height:44px; }
+  .lightbox-caption{ bottom:-60px; }
+  .lightbox-counter{ bottom:16px; }
+}
+
+@media(max-width:520px){
+  .wrap{ padding:0 20px; }
+  .hero-title{ font-size:2.1rem; }
+  .hero-eyebrow{ font-size:.62rem; letter-spacing:.28em; }
+  .hero-bottom{ padding:34px 20px 34px; }
+  .about-media{ height:400px; }
+  .about-blob, .about-blob-2{ display:none; }
+  .treatments-grid{ gap:18px; }
+  .process-num{ width:72px; height:72px; font-size:1.3rem; }
+  .process-item{ grid-template-columns:72px 1fr; gap:20px; }
+  .process-list::before{ left:36px; }
+  .cta-actions .btn{ width:100%; justify-content:center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="siteHeader" class="transparent">
+  <div class="wrap">
+    <a href="#home" class="logo" data-scroll>
+      <span class="logo-mark">S</span>
+      <span>Serenity<em>.</em></span>
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#home" data-scroll data-nav="home" class="active">Home</a></li>
+        <li><a href="#about" data-scroll data-nav="about">About</a></li>
+        <li><a href="#treatments" data-scroll data-nav="treatments">Treatments</a></li>
+        <li><a href="#gallery" data-scroll data-nav="gallery">Results</a></li>
+        <li><a href="#team" data-scroll data-nav="team">Team</a></li>
+        <li><a href="#contact" data-scroll data-nav="contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-right">
+      <span class="icon-btn"><i class="fa-solid fa-phone"></i></span>
+      <a href="#contact" class="btn" data-scroll><span>Book Now</span></a>
+      <div class="burger" id="burgerBtn"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-close" id="mobileClose"><i class="fa-solid fa-xmark"></i></div>
+  <a href="#home" data-scroll data-nav="home" class="active">Home</a>
+  <a href="#about" data-scroll data-nav="about">About</a>
+  <a href="#treatments" data-scroll data-nav="treatments">Treatments</a>
+  <a href="#gallery" data-scroll data-nav="gallery">Results</a>
+  <a href="#team" data-scroll data-nav="team">Team</a>
+  <a href="#contact" data-scroll data-nav="contact">Contact</a>
+  <a href="#contact" class="btn btn-blush" style="margin-top:16px;" data-scroll><span>Book a Visit</span></a>
+</div>
+
+<!-- ============================================
+     HERO
+=============================================== -->
+<section class="hero section-anchor" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-tint"></div>
+  <div class="hero-tint-2"></div>
+
+  <div class="wrap hero-top">
+    <div class="hero-eyebrow">
+      <i class="fa-solid fa-leaf"></i>
+      Boutique Skin Spa · Mumbai
+    </div>
+
+    <h1 class="hero-title">
+      Where skin <em>finds its calm</em>.
+    </h1>
+
+    <p class="hero-subtitle">
+      A serene dermatology and wellness studio where medical expertise meets
+      the quiet luxury of a spa retreat. Skin care as it should be.
+    </p>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-bottom-grid">
+      <div class="hero-bottom-text">
+        <h3>Skin that feels as good as it <em>looks</em>.</h3>
+        <p>Advanced treatments, delivered with genuine warmth and calm.</p>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span>10<em>+</em></span>
+          <span>Years of Care</span>
+        </div>
+        <div class="hero-stat">
+          <span>4.9<em>/5</em></span>
+          <span>Patient Rating</span>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-coral" data-scroll>
+          <span>Book Consultation</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>Hydrafacial</span>
+    <span>Laser Resurfacing</span>
+    <span>Anti-Ageing Rituals</span>
+    <span>Acne Therapy</span>
+    <span>Chemical Peels</span>
+    <span>Skin Boosters</span>
+    <span>Hydrafacial</span>
+    <span>Laser Resurfacing</span>
+    <span>Anti-Ageing Rituals</span>
+    <span>Acne Therapy</span>
+    <span>Chemical Peels</span>
+    <span>Skin Boosters</span>
+  </div>
+</div>
+
+<!-- ============================================
+     ABOUT
+=============================================== -->
+<section class="about section-anchor" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <div class="about-media" data-aos="fade-right">
+        <div class="about-blob"></div>
+        <div class="about-blob-2"></div>
+
+        <div class="about-image-main">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1000&q=80" alt="Serenity Skin Spa studio">
+        </div>
+        <div class="about-image-small">
+          <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80" alt="Skincare treatment">
+        </div>
+
+        <div class="about-badge">
+          <div class="num">10+</div>
+          <div class="label">Years of<br>Gentle Care</div>
+        </div>
+      </div>
+
+      <div class="about-copy" data-aos="fade-left">
+        <div class="section-head" style="margin-bottom:32px;">
+          <div class="eyebrow">Our Philosophy</div>
+          <h2>A quiet studio built on <em>genuine care</em>.</h2>
+        </div>
+
+        <p class="lead">
+          "We never wanted to be the busiest clinic in the city — only the
+          calmest one on the street."
+        </p>
+
+        <p>
+          Serenity Skin Spa began in 2014 with a single chair and a simple
+          belief — that advanced dermatology should feel as restorative as
+          the best spa. We take fewer patients each day so every visit feels
+          personal, unhurried, and genuinely calm.
+        </p>
+
+        <p>
+          Our team combines board-certified dermatologists with medical-grade
+          technology, and delivers everything in an atmosphere designed to
+          help you exhale.
+        </p>
+
+        <a href="#team" class="arrow-link" data-scroll>
+          <span>Meet the Team</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TREATMENTS
+=============================================== -->
+<section class="treatments section-anchor" id="treatments">
+  <div class="wrap">
+    <div class="section-head center" data-aos="fade-up" style="margin-inline:auto;">
+      <div class="eyebrow centered">Signature Treatments</div>
+      <h2>Considered care for <em>every skin story</em>.</h2>
+      <p>A complete range of clinical and aesthetic services — planned and delivered with warmth and restraint.</p>
+    </div>
+
+    <div class="treatments-grid">
+
+      <div class="treatment-card" data-aos="fade-up">
+        <div class="treatment-image">
+          <img src="https://images.unsplash.com/photo-1614108621038-6a1e13f4f7d7?auto=format&fit=crop&w=800&q=80" alt="Hydrafacial">
+        </div>
+        <div class="treatment-body">
+          <div class="treatment-icon"><i class="fa-solid fa-droplet"></i></div>
+          <h3>Hydrafacial <em>&amp; Glow</em></h3>
+          <p>Deep cleansing, gentle exfoliation and hydration in one serene session. Skin left luminous, never stripped.</p>
+          <a href="#contact" class="arrow-link" data-scroll>Book <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="treatment-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="treatment-image">
+          <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80" alt="Laser resurfacing">
+        </div>
+        <div class="treatment-body">
+          <div class="treatment-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h3>Laser <em>Resurfacing</em></h3>
+          <p>Advanced lasers to soften fine lines, sun damage and pigmentation — with visible results and minimal downtime.</p>
+          <a href="#contact" class="arrow-link" data-scroll>Book <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="treatment-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="treatment-image">
+          <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=800&q=80" alt="Anti-ageing">
+        </div>
+        <div class="treatment-body">
+          <div class="treatment-icon"><i class="fa-solid fa-star"></i></div>
+          <h3>Anti-Ageing <em>Rituals</em></h3>
+          <p>Skin boosters and subtle injectables — natural results that keep you looking like yourself, only brighter.</p>
+          <a href="#contact" class="arrow-link" data-scroll>Book <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="treatment-card" data-aos="fade-up">
+        <div class="treatment-image">
+          <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=80" alt="Acne therapy">
+        </div>
+        <div class="treatment-body">
+          <div class="treatment-icon"><i class="fa-solid fa-leaf"></i></div>
+          <h3>Acne &amp; <em>Scar Therapy</em></h3>
+          <p>Comprehensive plans combining peels, LED and microneedling — with honest expectations at every step.</p>
+          <a href="#contact" class="arrow-link" data-scroll>Book <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="treatment-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="treatment-image">
+          <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=80" alt="Chemical peels">
+        </div>
+        <div class="treatment-body">
+          <div class="treatment-icon"><i class="fa-solid fa-spa"></i></div>
+          <h3>Chemical <em>Peels</em></h3>
+          <p>Medical-grade peels designed around your skin type — for brighter, smoother, calmer texture.</p>
+          <a href="#contact" class="arrow-link" data-scroll>Book <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="treatment-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="treatment-image">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" alt="Medical dermatology">
+        </div>
+        <div class="treatment-body">
+          <div class="treatment-icon"><i class="fa-solid fa-stethoscope"></i></div>
+          <h3>Medical <em>Dermatology</em></h3>
+          <p>Expert care for eczema, rosacea, pigmentation and other skin concerns — delivered with warmth.</p>
+          <a href="#contact" class="arrow-link" data-scroll>Book <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PROCESS
+=============================================== -->
+<section class="process">
+  <div class="wrap">
+    <div class="process-head" data-aos="fade-up">
+      <div class="eyebrow">Your Journey</div>
+      <h2>Four quiet steps to <em>healthier skin</em>.</h2>
+      <p>Every visit at Serenity follows the same considered path — so you always know what to expect.</p>
+    </div>
+
+    <div class="process-list">
+      <div class="process-item" data-aos="fade-up">
+        <div class="process-num">01</div>
+        <div class="process-body">
+          <h4>Consultation</h4>
+          <p>A long, unhurried conversation about your skin, your goals and your history.</p>
+        </div>
+      </div>
+      <div class="process-item" data-aos="fade-up" data-aos-delay="80">
+        <div class="process-num">02</div>
+        <div class="process-body">
+          <h4>Skin Analysis</h4>
+          <p>Digital imaging and a full diagnostic assessment — so we plan around your skin.</p>
+        </div>
+      </div>
+      <div class="process-item" data-aos="fade-up" data-aos-delay="160">
+        <div class="process-num">03</div>
+        <div class="process-body">
+          <h4>Treatment Plan</h4>
+          <p>A personalised protocol with realistic timelines, staged sessions and full cost transparency.</p>
+        </div>
+      </div>
+      <div class="process-item" data-aos="fade-up" data-aos-delay="240">
+        <div class="process-num">04</div>
+        <div class="process-body">
+          <h4>Ongoing Care</h4>
+          <p>Follow-up reviews and gentle adjustments — so your results last and improve over time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     GALLERY
+=============================================== -->
+<section class="gallery section-anchor" id="gallery">
+  <div class="wrap">
+
+    <div class="gallery-head">
+      <div class="section-head" data-aos="fade-up">
+        <div class="eyebrow">Recent Transformations</div>
+        <h2>Glow stories from <em>the studio</em>.</h2>
+      </div>
+      <a href="#contact" class="arrow-link" data-aos="fade-up" data-scroll>
+        <span>Start Your Journey</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+
+      <div class="gallery-tile" data-aos="fade-up">
+        <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=1400&q=80" alt="Glow transformation">
+        <div class="gallery-zoom"><i class="fa-solid fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <span>Hydrafacial · 6 sessions</span>
+          <h4>Restored Radiance</h4>
+        </div>
+      </div>
+
+      <div class="gallery-tile" data-aos="fade-up" data-aos-delay="60">
+        <img src="https://images.unsplash.com/photo-1614108621038-6a1e13f4f7d7?auto=format&fit=crop&w=900&q=80" alt="Acne case">
+        <div class="gallery-zoom"><i class="fa-solid fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <span>Acne Therapy · 3 months</span>
+          <h4>Clear &amp; Calm</h4>
+        </div>
+      </div>
+
+      <div class="gallery-tile" data-aos="fade-up" data-aos-delay="120">
+        <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=900&q=80" alt="Anti-ageing">
+        <div class="gallery-zoom"><i class="fa-solid fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <span>Anti-Ageing · 4 sessions</span>
+          <h4>Naturally Refreshed</h4>
+        </div>
+      </div>
+
+      <div class="gallery-tile" data-aos="fade-up" data-aos-delay="180">
+        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=900&q=80" alt="Skin booster">
+        <div class="gallery-zoom"><i class="fa-solid fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <span>Skin Booster · 2 sessions</span>
+          <h4>Deep Hydration</h4>
+        </div>
+      </div>
+
+      <div class="gallery-tile" data-aos="fade-up" data-aos-delay="240">
+        <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=1400&q=80" alt="Body treatment">
+        <div class="gallery-zoom"><i class="fa-solid fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <span>Body · 6 sessions</span>
+          <h4>Full Body Glow</h4>
+        </div>
+      </div>
+
+      <div class="gallery-tile" data-aos="fade-up" data-aos-delay="300">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1600&q=80" alt="Facial treatment">
+        <div class="gallery-zoom"><i class="fa-solid fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <span>Cosmetic · 3 visits</span>
+          <h4>Complete Facial Makeover</h4>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TEAM
+=============================================== -->
+<section class="team section-anchor" id="team">
+  <div class="wrap">
+
+    <div class="team-head">
+      <div class="section-head" data-aos="fade-up">
+        <div class="eyebrow">The Team</div>
+        <h2>The dermatologists <em>you'll actually meet</em>.</h2>
+      </div>
+      <a href="#contact" class="arrow-link" data-aos="fade-up" data-scroll>
+        <span>Come Say Hello</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="team-grid">
+
+      <div class="team-member" data-aos="fade-up">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=700&q=80" alt="Dr. Anika Rao">
+          <div class="team-socials">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="team-info">
+          <h4>Dr. Anika Rao</h4>
+          <span>Founder · Lead Dermatologist</span>
+        </div>
+      </div>
+
+      <div class="team-member" data-aos="fade-up" data-aos-delay="80">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=700&q=80" alt="Dr. Vikram Shetty">
+          <div class="team-socials">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="team-info">
+          <h4>Dr. Vikram Shetty</h4>
+          <span>Laser &amp; Aesthetics</span>
+        </div>
+      </div>
+
+      <div class="team-member" data-aos="fade-up" data-aos-delay="160">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=700&q=80" alt="Dr. Neha Kapoor">
+          <div class="team-socials">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="team-info">
+          <h4>Dr. Neha Kapoor</h4>
+          <span>Medical Dermatology</span>
+        </div>
+      </div>
+
+      <div class="team-member" data-aos="fade-up" data-aos-delay="240">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=700&q=80" alt="Dr. Aditya Rao">
+          <div class="team-socials">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="team-info">
+          <h4>Dr. Aditya Rao</h4>
+          <span>Hair &amp; Transplant Surgery</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TESTIMONIALS
+=============================================== -->
+<section class="testimonials">
+  <div class="wrap">
+
+    <div class="section-head" data-aos="fade-up">
+      <div class="eyebrow">Patient Words</div>
+      <h2>Real stories, <em>quietly shared</em>.</h2>
+    </div>
+
+    <div class="testimonial-grid">
+
+      <div class="testimonial-card" data-aos="fade-up">
+        <div class="testimonial-stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testimonial-quote">
+          I've struggled with my skin for years. Serenity was the first place
+          that felt <em>calm and honest</em> — no pushing treatments I didn't
+          need.
+        </p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Sara Mehta">
+          <div class="testimonial-author-info">
+            <h5>Sara Mehta</h5>
+            <span>Patient since 2022</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="testimonial-stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testimonial-quote">
+          The level of care, the results, the way they <em>listen</em> —
+          it's the most considered skin care I've ever experienced.
+        </p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Ananya Kapoor">
+          <div class="testimonial-author-info">
+            <h5>Ananya Kapoor</h5>
+            <span>Patient since 2021</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="testimonial-stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testimonial-quote">
+          My acne cleared up in three months. The team explained every step
+          with <em>honest expectations</em> and genuine warmth.
+        </p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=150&q=80" alt="Rahul Sharma">
+          <div class="testimonial-author-info">
+            <h5>Rahul Sharma</h5>
+            <span>Patient since 2023</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CONTACT
+=============================================== -->
+<section class="contact section-anchor" id="contact">
+  <div class="wrap">
+
+    <div class="contact-head" data-aos="fade-up">
+      <div class="eyebrow">Get in Touch</div>
+      <h2>Let's start with a <em>gentle conversation</em>.</h2>
+      <p>Book a consultation, ask a question, or simply say hello. Every message is read personally by our team.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-form-wrap" data-aos="fade-right">
+        <h3>Send an Enquiry</h3>
+        <p>All fields are required. Your information stays private.</p>
+
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you — your message has been received. We will reply personally within 24 hours.'); this.reset();">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cName">Full Name</label>
+              <input type="text" id="cName" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="cPhone">Phone</label>
+              <input type="tel" id="cPhone" placeholder="+91 98765 43210" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cEmail">Email Address</label>
+            <input type="email" id="cEmail" placeholder="your@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="cSubject">I'm enquiring about</label>
+            <select id="cSubject" required>
+              <option value="">Please select…</option>
+              <option value="consultation">Book a Consultation</option>
+              <option value="hydrafacial">Hydrafacial &amp; Glow</option>
+              <option value="laser">Laser Skin Resurfacing</option>
+              <option value="antiageing">Anti-Ageing Rituals</option>
+              <option value="acne">Acne &amp; Scar Therapy</option>
+              <option value="peels">Chemical Peels</option>
+              <option value="medical">Medical Dermatology</option>
+              <option value="other">Something Else</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cMessage">Your Message</label>
+            <textarea id="cMessage" placeholder="Tell us a little about what you're looking for…" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-coral">
+            <span>Send Message</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <p class="form-note">
+            <i class="fa-solid fa-shield-heart"></i>
+            Your details are kept strictly private.
+          </p>
+        </form>
+      </div>
+
+      <div class="contact-side" data-aos="fade-left">
+
+        <div class="side-block">
+          <h4><i class="fa-solid fa-clock"></i> Opening Hours</h4>
+          <ul class="hours-list" id="hoursList">
+            <li><span>Monday – Friday</span><span>9:00 – 19:00</span></li>
+            <li><span>Saturday</span><span>9:00 – 15:00</span></li>
+            <li><span>Sunday</span><span>Closed</span></li>
+            <li><span>Public Holidays</span><span>By Appointment</span></li>
+          </ul>
+        </div>
+
+        <div class="side-block">
+          <h4><i class="fa-solid fa-address-book"></i> Studio Details</h4>
+          <ul class="contact-list">
+            <li><i class="fa-solid fa-location-dot"></i> <span>12 Lansdowne Terrace, Koregaon Park,<br>Mumbai, Maharashtra 400001</span></li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+911234567890">+91 12345 67890</a></li>
+            <li><i class="fa-brands fa-whatsapp"></i> <a href="#">+91 12345 67890</a></li>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:hello@serenityspa.com">hello@serenityspa.com</a></li>
+          </ul>
+        </div>
+
+        <div class="side-block">
+          <h4><i class="fa-solid fa-share-nodes"></i> Follow Along</h4>
+          <p style="color:var(--muted);font-size:.92rem;margin-bottom:20px;line-height:1.7;font-weight:300;">
+            Occasional glimpses of studio life and gentle skin tips. No spam, ever.
+          </p>
+          <div class="social-inline">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="emergency">
+          <h4><i class="fa-solid fa-triangle-exclamation"></i> Skin Emergency?</h4>
+          <p>Severe reaction, sudden breakout, or an urgent concern before an event? Call us directly — we reserve same-day slots for urgent cases.</p>
+          <a href="tel:+911234567890"><i class="fa-solid fa-phone"></i> Call Now</a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="faq-grid">
+
+      <div class="faq-head" data-aos="fade-right">
+        <div class="section-head">
+          <div class="eyebrow">Common Questions</div>
+          <h2>Things patients <em>often ask</em>.</h2>
+          <p>A few answers before your first visit — and if your question isn't here, we're always happy to talk it through.</p>
+        </div>
+        <a href="tel:+911234567890" class="arrow-link">
+          <span>Call the Studio</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="faq-list" data-aos="fade-left">
+        <div class="faq-item">
+          <div class="faq-q">Which treatment should I start with?<i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a"><p>Almost always, a consultation. We'll examine, listen and recommend a plan in order of priority — sometimes starting with something simple and gentle before more advanced treatments.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Are laser treatments painful?<i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a"><p>Most patients describe laser treatments as a brief warming or snapping sensation. We use numbing cream wherever needed and adjust energy levels to your comfort throughout.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How long until I see results?<i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a"><p>Hydrafacials: immediate. Injectables: 2–4 weeks. Lasers: progressive over 4–8 weeks. Acne therapy: 3–6 months. We'll give you a realistic timeline at your consultation.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you treat children?<i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a"><p>Yes — we offer pediatric dermatology for common concerns like eczema, birthmarks and skin infections, delivered in a child-friendly way.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you offer payment plans?<i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a"><p>Yes — for larger treatment plans we offer bundled pricing and interest-free instalments. Ask during your consultation.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I combine treatments?<i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a"><p>Often yes — many patients combine treatments for better results. We'll plan a combined protocol with appropriate spacing so your skin recovers properly between sessions.</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-band">
+    <div class="cta-inner" data-aos="fade-up">
+      <div class="eyebrow">Ready When You Are</div>
+      <h2>Let's design the skin care <em>you deserve</em>.</h2>
+      <p>Book a consultation — a calm, unhurried conversation about your skin, your concerns and what's possible.</p>
+      <div class="cta-actions">
+        <a href="#contact" class="btn btn-coral" data-scroll>
+          <span>Book Consultation</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="#treatments" class="btn btn-outline-ivory" data-scroll>
+          <span>See Treatments</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="logo" data-scroll>
+          <span class="logo-mark">S</span>
+          <span>Serenity<em>.</em></span>
+        </a>
+        <p>A serene dermatology and wellness studio — where medical expertise meets the calm of a spa retreat.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Studio</h5>
+        <ul>
+          <li><a href="#about" data-scroll>About</a></li>
+          <li><a href="#treatments" data-scroll>Treatments</a></li>
+          <li><a href="#gallery" data-scroll>Results</a></li>
+          <li><a href="#contact" data-scroll>Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Treatments</h5>
+        <ul>
+          <li><a href="#treatments" data-scroll>Hydrafacial</a></li>
+          <li><a href="#treatments" data-scroll>Laser Resurfacing</a></li>
+          <li><a href="#treatments" data-scroll>Anti-Ageing</a></li>
+          <li><a href="#treatments" data-scroll>Acne Therapy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h5>Newsletter</h5>
+        <p>Gentle skin tips and studio news. Occasional, never spammy.</p>
+        <form onsubmit="event.preventDefault(); this.reset(); alert('Thanks for subscribing!');">
+          <input type="email" placeholder="your@email.com" required>
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Serenity Skin Spa. All rights reserved.</span>
+      <span>Where skin finds calm · <a href="#">Privacy</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lightbox-prev" id="lightboxPrev"><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="lightbox-next" id="lightboxNext"><i class="fa-solid fa-arrow-right"></i></button>
+  <div class="lightbox-img-wrap">
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption">
+      <span id="lightboxCat"></span>
+      <h4 id="lightboxTitle"></h4>
+    </div>
+  </div>
+  <div class="lightbox-counter" id="lightboxCounter"><strong>1</strong> / 6</div>
+</div>
+
+<div class="scroll-top" id="scrollTop" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+AOS.init({ duration: 900, once: true, offset: 60, easing: 'ease-out-cubic' });
+
+/* ============================================
+   HEADER SCROLL STATE + SCROLL SPY
+=============================================== */
+const header = document.getElementById('siteHeader');
+const scrollTopBtn = document.getElementById('scrollTop');
+const heroEl = document.querySelector('.hero');
+
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('nav.main-nav a[data-nav], .mobile-nav a[data-nav]');
+
+function updateHeader(){
+  const y = window.scrollY;
+  const heroH = heroEl ? heroEl.offsetHeight : 0;
+  if (y < heroH - 200) {
+    header.classList.add('transparent');
+    header.classList.remove('scrolled');
+  } else {
+    header.classList.remove('transparent');
+    header.classList.add('scrolled');
+  }
+  scrollTopBtn.classList.toggle('show', y > 500);
+}
+
+function updateScrollSpy(){
+  const y = window.scrollY + 150;
+  let current = 'home';
+  sections.forEach(sec => {
+    if (sec.offsetTop <= y) current = sec.id;
+  });
+  navAnchors.forEach(link => {
+    const isActive = link.dataset.nav === current;
+    link.classList.toggle('active', isActive);
+  });
+}
+
+window.addEventListener('scroll', () => {
+  updateHeader();
+  updateScrollSpy();
+});
+window.addEventListener('load', () => {
+  updateHeader();
+  updateScrollSpy();
+});
+updateHeader();
+updateScrollSpy();
+
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ============================================
+   SMOOTH SCROLL FOR ALL [data-scroll] LINKS
+=============================================== */
+document.querySelectorAll('[data-scroll]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const href = link.getAttribute('href');
+    if (!href || !href.startsWith('#')) return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+    const offset = 90;
+    const y = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    // Close mobile nav if open
+    mobileNav.classList.remove('open');
+  });
+});
+
+/* ============================================
+   MOBILE NAV
+=============================================== */
+const burger = document.getElementById('burgerBtn');
+const mobileNav = document.getElementById('mobileNav');
+const mobileClose = document.getElementById('mobileClose');
+burger.addEventListener('click', () => mobileNav.classList.add('open'));
+mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') mobileNav.classList.remove('open'); });
+
+/* ============================================
+   FAQ ACCORDION
+=============================================== */
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    faqItems.forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if (!open) {
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  });
+});
+if (faqItems.length) {
+  faqItems[0].classList.add('open');
+  const f = faqItems[0].querySelector('.faq-a');
+  f.style.maxHeight = f.scrollHeight + 'px';
+}
+
+/* ============================================
+   HIGHLIGHT TODAY'S HOURS
+=============================================== */
+(function(){
+  const today = new Date().getDay();
+  const items = document.querySelectorAll('.hours-list li');
+  items.forEach(i => i.classList.remove('today'));
+  if (today >= 1 && today <= 5 && items[0]) items[0].classList.add('today');
+  else if (today === 6 && items[1]) items[1].classList.add('today');
+  else if (today === 0 && items[2]) items[2].classList.add('today');
+})();
+
+/* ============================================
+   GALLERY LIGHTBOX
+=============================================== */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCat = document.getElementById('lightboxCat');
+const lightboxTitle = document.getElementById('lightboxTitle');
+const lightboxCounter = document.getElementById('lightboxCounter');
+const tiles = document.querySelectorAll('.gallery-tile');
+const tileArray = Array.from(tiles);
+let currentIndex = 0;
+
+function openLightbox(index){
+  currentIndex = index;
+  const tile = tileArray[currentIndex];
+  const img = tile.querySelector('img');
+  const cat = tile.querySelector('.gallery-overlay span');
+  const title = tile.querySelector('.gallery-overlay h4');
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt;
+  lightboxCat.textContent = cat ? cat.textContent : '';
+  lightboxTitle.textContent = title ? title.textContent : '';
+  lightboxCounter.innerHTML = `<strong>${currentIndex + 1}</strong> / ${tileArray.length}`;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function showNext(){
+  currentIndex = (currentIndex + 1) % tileArray.length;
+  openLightbox(currentIndex);
+}
+
+function showPrev(){
+  currentIndex = (currentIndex - 1 + tileArray.length) % tileArray.length;
+  openLightbox(currentIndex);
+}
+
+tiles.forEach((tile, i) => tile.addEventListener('click', () => openLightbox(i)));
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightboxNext').addEventListener('click', showNext);
+document.getElementById('lightboxPrev').addEventListener('click', showPrev);
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') showNext();
+  if (e.key === 'ArrowLeft') showPrev();
+});
+</script>
+</body>
+</html>
